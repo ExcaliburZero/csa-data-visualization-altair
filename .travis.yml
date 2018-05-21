@@ -1,0 +1,17 @@
+language: python
+python:
+  - "3.6"
+  - "3.6-dev"
+
+install:
+  - pip install coveralls
+  - pip install pipenv
+  - pipenv install --dev
+  - mkdir data && curl -o data/meetings.csv http://www.cs.oswego.edu/~cwells2/code/csa-data-visualization/meetings.csv
+  - pipenv run python -m csadatavis
+
+script:
+  - nosetests --with-coverage --cover-package=csadatavis
+
+after_success:
+  - coveralls
