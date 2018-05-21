@@ -6,6 +6,7 @@ To generate the html webpage with the data visualizations, run the following com
 
 ```
 # Grab the dataset
+$ mkdir data
 $ curl -o data/meetings.csv http://www.cs.oswego.edu/~cwells2/code/csa-data-visualization/meetings.csv
 
 # Generate the plot page
