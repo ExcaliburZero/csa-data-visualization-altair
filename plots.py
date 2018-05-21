@@ -18,14 +18,19 @@ def main() -> None:
         tooltip="Meeting"
     ).interactive()
 
-    histogram = alt.Chart(data).mark_bar().encode(
+    yearly_summary = alt.Chart(data).mark_bar().encode(
         x="Year",
         y="count()",
-        color="Type",
-        tooltip="Meeting"
+        color="Type"
     )
 
-    charts = attendance_chart & histogram
+    monthly_summary = alt.Chart(data).mark_bar().encode(
+        alt.X("Date:T", timeUnit="month"),
+        y="count()",
+        color="Type"
+    )
+
+    charts = (attendance_chart | yearly_summary) & (monthly_summary)
 
     charts.save(OUTPUT_FILE)
 
