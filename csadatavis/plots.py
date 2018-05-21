@@ -1,16 +1,10 @@
 import altair as alt
-import pandas as pd
 
-DATA_FILE = "data/meetings.csv"
-OUTPUT_FILE = "plots.html"
-
-def main() -> None:
+def create_charts(data) -> alt.Chart:
     """
     Creates some plots of the CSA meeting data and saves the plots to the
     output html file.
     """
-    data = pd.read_csv(DATA_FILE)
-
     brush = alt.selection(type="multi", encodings=['x'])
 
     attendance_chart = (alt.Chart(data).mark_circle().encode(
@@ -58,7 +52,4 @@ def main() -> None:
 
     charts = ((attendance_chart | yearly_summary | attendance_histogram) & (attendance_monthly_summary | attendance_yearly_summary | type_by_year))
 
-    charts.save(OUTPUT_FILE)
-
-if __name__ == "__main__":
-    main()
+    return charts
