@@ -10,5 +10,5 @@ $ mkdir data
 $ curl -o data/meetings.csv http://www.cs.oswego.edu/~cwells2/code/csa-data-visualization/meetings.csv
 
 # Generate the plot page
-$ pipenv run python plots.py 
+$ pipenv run python csadatavis
 ```
