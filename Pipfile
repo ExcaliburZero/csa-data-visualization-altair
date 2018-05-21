@@ -9,6 +9,7 @@ verify_ssl = true
 altair = "*"
 nose = "*"
 coverage = "*"
+mypy = "*"
 
 [requires]
 python_version = "3.6"

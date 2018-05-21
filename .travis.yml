@@ -11,6 +11,7 @@ install:
   - pipenv run python -m csadatavis
 
 script:
+  - pipenv run mypy csadatavis --ignore-missing-imports --disallow-untyped-defs
   - nosetests --with-coverage --cover-package=csadatavis
 
 after_success:

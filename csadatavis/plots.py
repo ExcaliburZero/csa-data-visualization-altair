@@ -1,6 +1,7 @@
 import altair as alt
+import pandas as pd
 
-def create_charts(data) -> alt.Chart:
+def create_charts(data: pd.DataFrame) -> alt.Chart:
     """
     Creates some plots of the CSA meeting data and saves the plots to the
     output html file.
