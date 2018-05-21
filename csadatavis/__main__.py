@@ -1,6 +1,6 @@
 import pandas as pd
 
-import plots
+from .plots import create_charts
 
 DATA_FILE = "data/meetings.csv"
 OUTPUT_FILE = "plots.html"
@@ -8,7 +8,7 @@ OUTPUT_FILE = "plots.html"
 def main() -> None:
     data = pd.read_csv(DATA_FILE)
 
-    charts = plots.create_charts(data)
+    charts = create_charts(data)
 
     charts.save(OUTPUT_FILE)
 
