@@ -16,7 +16,10 @@ def create_charts(data: pd.DataFrame) -> alt.Chart:
     attendance_histogram = create_attendance_histogram(data, brush)
     meeting_type_summary = create_meeting_type_summary(data, brush)
 
-    charts = ((monthly_summary | yearly_summary | attendance_histogram) & (attendance_monthly_summary | attendance_yearly_summary | meeting_type_summary))
+    top_row = monthly_summary | yearly_summary | attendance_histogram
+    bottom_row = attendance_monthly_summary | attendance_yearly_summary | meeting_type_summary
+
+    charts = top_row & bottom_row
 
     return charts
 
