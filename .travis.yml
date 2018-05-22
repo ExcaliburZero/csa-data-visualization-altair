@@ -7,11 +7,11 @@ install:
   - pip install coveralls
   - pip install pipenv
   - pipenv install --dev
-  - mkdir data && curl -o data/meetings.csv http://www.cs.oswego.edu/~cwells2/code/csa-data-visualization/meetings.csv
+  - make download_data
   - pipenv run python -m csadatavis
 
 script:
-  - pipenv run mypy csadatavis --ignore-missing-imports --disallow-untyped-defs
+  - make typecheck
   - nosetests --with-coverage --cover-package=csadatavis
 
 after_success:
