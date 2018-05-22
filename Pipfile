@@ -4,12 +4,13 @@ name = "pypi"
 verify_ssl = true
 
 [dev-packages]
-
-[packages]
-altair = "*"
 nose = "*"
 coverage = "*"
 mypy = "*"
+
+[packages]
+altair = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.6"
