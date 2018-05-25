@@ -7,10 +7,12 @@ verify_ssl = true
 nose = "*"
 coverage = "*"
 mypy = "*"
+pylint = "*"
 
 [packages]
 altair = "*"
 pandas = "*"
+chevron = "*"
 
 [requires]
 python_version = "3.6"
