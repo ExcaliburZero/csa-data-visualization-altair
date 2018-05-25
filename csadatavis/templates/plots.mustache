@@ -19,7 +19,15 @@
 
 </head>
 <body>
+  <h1>CSA Meeting Data Visualization</h1>
+  <p>This is a visualization of data that we have collected on meetings for SUNY Oswego's Computer Science Association. Here you can see monthly and yearly trends in metting frequency and attendance.</p>
+  <p>You can also filter the data based on meeting types by selecting a meeting type in the bar chart in the bottom right. You can select multiple meeting types by holding down Shift.</p>
   <div id="vis"></div>
+  <h2>About the Data</h2>
+  <p>We started collecting this data in February 2017. Earlier meeting data, up to the 2015-16 academic year, was collected by going through meeting announcement emails that were sent out, so attendance data is not available and a few meetings are missing. Though a few meetings since then do not have attendance data as we forgot to record attendence.</p>
+  <p>The raw csv file for the data is available at the <a href="data/meetings.csv">following link</a>.</p>
+  <h2>Code for this Webpage</h2>
+  <p>This was generated in Python using the <a href="https://altair-viz.github.io/">Altair</a> plotting library. The source code for the script is released under the MIT license and available at the following <a href="https://github.com/ExcaliburZero/csa-data-visualization-altair">GitHub repo</a>.</p>
   <script type="text/javascript">
     var spec = {{{spec}}}
     var embed_opt = {"mode": "vega-lite"};
