@@ -15,9 +15,11 @@ def create_charts(data: pd.DataFrame) -> alt.Chart:
 
     attendance_histogram = create_attendance_histogram(data, brush)
     meeting_type_summary = create_meeting_type_summary(data, brush)
+    meeting_type_attendance = create_meeting_type_attendance(data, brush)
 
     top_row = monthly_summary | yearly_summary | attendance_histogram
-    bottom_row = attendance_monthly_summary | attendance_yearly_summary | meeting_type_summary
+    bottom_row = attendance_monthly_summary | attendance_yearly_summary | \
+            (meeting_type_summary & meeting_type_attendance)
 
     charts = top_row & bottom_row
 
@@ -97,10 +99,19 @@ def create_meeting_type_summary(data: pd.DataFrame, brush: alt.selection) -> alt
     meeting types.
     """
     return alt.Chart(data).mark_bar().encode(
-            x="Type:N",
-            y="count()",
+            x="count()",
+            y="Type:N",
             color="Year",
             opacity=alt.condition(brush, alt.OpacityValue(1), alt.OpacityValue(0.4))
         ).properties(
             selection=brush
         )
+
+def create_meeting_type_attendance(data: pd.DataFrame, brush: alt.selection) -> alt.Chart:
+    return alt.Chart(data).mark_point().encode(
+            #alt.Tooltip(["Year:N", "Type:N"]),
+            alt.Tooltip("mean(Attendees):Q"),
+            x="Year:N",
+            y="Type:N",
+            size="mean(Attendees):Q"
+        ).transform_filter(brush.ref())
